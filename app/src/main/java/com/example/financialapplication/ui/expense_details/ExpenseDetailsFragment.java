@@ -1,14 +1,20 @@
-package com.example.financialapplication;
+package com.example.financialapplication.ui.expense_details;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+//import com.example.financialapplication.ExpenseDetailsFragmentArgs;
+import com.example.financialapplication.R;
 
 
 /**
@@ -24,6 +30,8 @@ public class ExpenseDetailsFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private static String expense;
+    private ExpenseDetailsViewModel expenseDetailsViewModel;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -53,6 +61,8 @@ public class ExpenseDetailsFragment extends Fragment {
         return fragment;
     }
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +76,17 @@ public class ExpenseDetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+//        expenseDetailsViewModel =
+//                ViewModelProviders.of(this).get(ExpenseDetailsViewModel.class);
+//        expenseDetailsViewModel.getText().observe(this, new Observer<String>() {
+//            @Override
+//            public void onChanged(@Nullable String s) {
+//                getActivity().setTitle(expense + " Details");
+//            }
+//        });
+
+
         return inflater.inflate(R.layout.fragment_expense_details, container, false);
     }
 
@@ -77,15 +98,24 @@ public class ExpenseDetailsFragment extends Fragment {
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        TextView tv = view.findViewById(R.id.text_expense_detail_title);
+        String expenseTitle = ExpenseDetailsFragmentArgs.fromBundle(getArguments()).getExpense();
+        tv.setText(expenseTitle);
     }
+
+//    @Override
+//    public void onAttach(Context context) {
+//        super.onAttach(context);
+//        if (context instanceof OnFragmentInteractionListener) {
+//            mListener = (OnFragmentInteractionListener) context;
+//        } else {
+//            throw new RuntimeException(context.toString()
+//                    + " must implement OnFragmentInteractionListener");
+//        }
+//    }
+
+
 
     @Override
     public void onDetach() {
@@ -107,4 +137,5 @@ public class ExpenseDetailsFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
 }

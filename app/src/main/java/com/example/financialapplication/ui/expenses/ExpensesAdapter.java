@@ -7,12 +7,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.financialapplication.ExpenseDetailsFragment;
 import com.example.financialapplication.R;
 
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ExpensesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -46,11 +46,14 @@ public class ExpensesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String mString = "What is up my doods!";
+                String mString = stringArrayList.get(position);
                 Toast.makeText(v.getContext(), stringArrayList.get(position), Toast.LENGTH_SHORT).show();
 
-                ExpenseDetailsFragment action = ExpensesFragmentDirections.actionNavigationDashboardToExpenseDetailsFragment();
-                action.
+                ExpensesFragmentDirections.ActionNavigationExpensesToExpenseDetailsFragment action = ExpensesFragmentDirections.actionNavigationExpensesToExpenseDetailsFragment();
+                action.setExpense(mString);
+
+
+                Navigation.findNavController(v).navigate(action);
 
                 notifyItemChanged(position);
             }

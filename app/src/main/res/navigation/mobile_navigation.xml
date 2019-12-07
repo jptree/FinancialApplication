@@ -14,7 +14,7 @@
     <fragment
         android:id="@+id/navigation_expenses"
         android:name="com.example.financialapplication.ui.expenses.ExpensesFragment"
-        android:label="expenses"
+        android:label="Expenses"
         tools:layout="@layout/fragment_expenses">
         <action
             android:id="@+id/action_navigation_expenses_to_expenseDetailsFragment"
@@ -28,7 +28,12 @@
         tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/ExpenseDetailsFragment"
-        android:name="com.example.financialapplication.ExpenseDetailsFragment"
-        android:label="fragment_expense_details"
-        tools:layout="@layout/fragment_expense_details" />
+        android:name="com.example.financialapplication.ui.expense_details.ExpenseDetailsFragment"
+        android:label="{expense} Details"
+        tools:layout="@layout/fragment_expense_details">
+        <argument
+            android:name="expense"
+            app:argType="string"
+            android:defaultValue="default_expense" />
+    </fragment>
 </navigation>

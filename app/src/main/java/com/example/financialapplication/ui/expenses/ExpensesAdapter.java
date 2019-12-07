@@ -5,7 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.financialapplication.ExpenseDetailsFragment;
 import com.example.financialapplication.R;
 
 import java.util.ArrayList;
@@ -16,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class ExpensesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private ArrayList<String> stringArrayList;
 
+
     public ExpensesAdapter(Context context, ArrayList<String> stringList) {
         this.stringArrayList = stringList;
         notifyDataSetChanged();
@@ -25,77 +28,50 @@ public class ExpensesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         final LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View v;
-        switch(viewType) {
-            case 1:
-                v = inflater.inflate(R.layout.card_view_expense_double, parent, false);
-                return new ExpenseHolderDouble(v, viewType, parent.getContext());
-            
-            case 2:
-                v = inflater.inflate(R.layout.card_view_expense_singular, parent, false);
-                return new ExpenseHolderSingular(v, viewType, parent.getContext());
-            
-            default:
-                return null;
-        }
+        View v = inflater.inflate(R.layout.card_view_expense, parent, false);
+
+
+
+
+        return new ExpenseHolder(v);
         
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
 
-        switch (holder.getItemViewType()) {
-            case 1:
+        ExpenseHolder viewHolder = (ExpenseHolder) holder;
+        viewHolder.expenseCategoryTitle.setText(stringArrayList.get(position));
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String mString = "What is up my doods!";
+                Toast.makeText(v.getContext(), stringArrayList.get(position), Toast.LENGTH_SHORT).show();
 
-                ExpenseHolderDouble viewHolderDouble = (ExpenseHolderDouble) holder;
-                viewHolderDouble.expenseCategoryTitleLeft.setText(stringArrayList.get(position));
-                viewHolderDouble.expenseCategoryTitleRight.setText(stringArrayList.get(position + 1));
-                break;
+                ExpenseDetailsFragment action = ExpensesFragmentDirections.actionNavigationDashboardToExpenseDetailsFragment();
+                action.
 
-
-            case 2:
-                ExpenseHolderSingular viewHolderSingular = (ExpenseHolderSingular) holder;
-                viewHolderSingular.expenseCategoryTitle.setText(stringArrayList.get(position));
-                break;
-            default:
-                break;
-        }
-
+                notifyItemChanged(position);
+            }
+        });
 
     }
 
     @Override
     public int getItemCount() {
-        return stringArrayList.size() - 1;
+        return stringArrayList.size();
     }
 
-    @Override
-    public int getItemViewType(int position) {
-        if (position % 2  == 0) {
-            return 1;
-        } else {
-            return 2;
-        }
-    }
 
-    class ExpenseHolderSingular extends RecyclerView.ViewHolder {
+    class ExpenseHolder extends RecyclerView.ViewHolder {
         private TextView expenseCategoryTitle;
 
-        public ExpenseHolderSingular(View itemView, int viewType, Context context) {
+        public ExpenseHolder(View itemView) {
             super(itemView);
-            expenseCategoryTitle = itemView.findViewById(R.id.text_expense_name_singular);
+            expenseCategoryTitle = itemView.findViewById(R.id.text_expense_name);
         }
     }
 
-    class ExpenseHolderDouble extends RecyclerView.ViewHolder {
-        private TextView expenseCategoryTitleLeft;
-        private TextView expenseCategoryTitleRight;
 
-        public ExpenseHolderDouble(View itemView, int viewType, Context context) {
-            super(itemView);
-            expenseCategoryTitleLeft = itemView.findViewById(R.id.text_expense_name_left);
-            expenseCategoryTitleRight = itemView.findViewById(R.id.text_expense_name_right);
-        }
-    }
 }

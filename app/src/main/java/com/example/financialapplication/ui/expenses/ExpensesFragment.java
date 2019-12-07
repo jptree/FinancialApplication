@@ -1,6 +1,7 @@
 package com.example.financialapplication.ui.expenses;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,12 +12,15 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.financialapplication.R;
 
 import java.util.ArrayList;
+
+import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class ExpensesFragment extends Fragment {
 
@@ -41,7 +45,7 @@ public class ExpensesFragment extends Fragment {
 
         recyclerView = (RecyclerView) root.findViewById(R.id.recycler_view_expense_categories);
 
-        layoutManager = new LinearLayoutManager(getContext());
+        layoutManager = new GridLayoutManager(getContext(), 2);
         recyclerView.setLayoutManager(layoutManager);
 
         myDataset = new ArrayList<>();
@@ -51,6 +55,7 @@ public class ExpensesFragment extends Fragment {
         myDataset.add("Education");
         myDataset.add("Motgan");
         myDataset.add("Yeeting");
+        myDataset.add("Yeeting2");
 
 
         mAdapter = new ExpensesAdapter(getContext(), myDataset);
@@ -58,4 +63,5 @@ public class ExpensesFragment extends Fragment {
 
         return root;
     }
+
 }

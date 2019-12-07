@@ -12,14 +12,23 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_expenses"
         android:name="com.example.financialapplication.ui.expenses.ExpensesFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_expenses" />
+        android:label="expenses"
+        tools:layout="@layout/fragment_expenses">
+        <action
+            android:id="@+id/action_navigation_expenses_to_expenseDetailsFragment"
+            app:destination="@id/ExpenseDetailsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.example.financialapplication.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/ExpenseDetailsFragment"
+        android:name="com.example.financialapplication.ExpenseDetailsFragment"
+        android:label="fragment_expense_details"
+        tools:layout="@layout/fragment_expense_details" />
 </navigation>

@@ -9,7 +9,14 @@
         android:id="@+id/navigation_home"
         android:name="com.example.financialapplication.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_lifePictureBoard"
+            app:destination="@id/lifePictureBoard" />
+        <argument
+            android:name="testingData"
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_expenses"
@@ -36,4 +43,9 @@
             app:argType="string"
             android:defaultValue="default_expense" />
     </fragment>
+    <fragment
+        android:id="@+id/lifePictureBoard"
+        android:name="com.example.financialapplication.ui.life_picture_board.LifePictureBoardFragment"
+        android:label="fragment_life_picture_board"
+        tools:layout="@layout/fragment_life_picture_board" />
 </navigation>

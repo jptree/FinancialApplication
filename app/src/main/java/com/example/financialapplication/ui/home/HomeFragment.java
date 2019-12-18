@@ -1,9 +1,11 @@
 package com.example.financialapplication.ui.home;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -12,13 +14,17 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 
 import com.example.financialapplication.R;
+
+import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
-    private CustomDrawableView customDrawableView;
+    private PerformanceView performanceGraphic;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -33,13 +39,24 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        final View scroll = root.findViewById(R.id.scroll_view_drawable);
-        LinearLayout layout = (LinearLayout) root.findViewById(R.id.linear_layout_drawable);
+        LinearLayout layout = (LinearLayout) root.findViewById(R.id.canvas_performance);
 
-        customDrawableView = new CustomDrawableView(getContext());
-        layout.addView(customDrawableView);
+        performanceGraphic = new PerformanceView(getContext());
+        layout.addView(performanceGraphic);
 
-//        return customDrawableView;
+        Button buttonLifePictureBoard = (Button) root.findViewById(R.id.buttonLife);
+        buttonLifePictureBoard.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                NavDirections action = HomeFragmentDirections.actionNavigationHomeToLifePictureBoard();
+
+                Navigation.findNavController(v).navigate(action);
+
+//                notifyItemChanged(position);
+                Log.d(TAG, "onClick: Hi");
+            }
+        });
+
+//        return performanceGraphic;
         return root;
     }
 }

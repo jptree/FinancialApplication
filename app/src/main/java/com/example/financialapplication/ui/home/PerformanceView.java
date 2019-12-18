@@ -11,12 +11,12 @@ import android.view.View;
 
 import com.example.financialapplication.R;
 
-public class CustomDrawableView extends View {
+public class PerformanceView extends View {
     private ShapeDrawable drawable;
     private Path path;
     private Paint paint;
 
-    public CustomDrawableView(Context context) {
+    public PerformanceView(Context context) {
         super(context);
 
         int x = 10;
@@ -39,7 +39,6 @@ public class CustomDrawableView extends View {
             }
         };
 
-//        int centerX = (this.getWidth() / 2);
         int centerX = 500;
         int[] xArray = new int[6];
         xArray[0] = 500;
@@ -89,16 +88,7 @@ public class CustomDrawableView extends View {
     }
 
 
-//    @Override
-//    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-//        int width = 100;
-//        int height = 9000;
-//        setMeasuredDimension(width, height);
-//
-//
-//
-//
-//    }
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 

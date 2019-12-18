@@ -3,18 +3,24 @@ package com.example.financialapplication.ui.expense_details;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.LinearLayout;
 
 //import com.example.financialapplication.ExpenseDetailsFragmentArgs;
 import com.example.financialapplication.R;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
+
+import static android.content.ContentValues.TAG;
 
 
 /**
@@ -32,6 +38,9 @@ public class ExpenseDetailsFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     private static String expense;
     private ExpenseDetailsViewModel expenseDetailsViewModel;
+
+    TestAdapter testAdapter;
+    ViewPager2 viewPager2;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -60,8 +69,6 @@ public class ExpenseDetailsFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -99,9 +106,19 @@ public class ExpenseDetailsFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        TextView tv = view.findViewById(R.id.text_expense_detail_title);
-        String expenseTitle = ExpenseDetailsFragmentArgs.fromBundle(getArguments()).getExpense();
-        tv.setText(expenseTitle);
+//        TextView tv = view.findViewById(R.id.text_expense_detail_title);
+//        String expenseTitle = ExpenseDetailsFragmentArgs.fromBundle(getArguments()).getExpense();
+//        tv.setText(expenseTitle);
+        testAdapter = new TestAdapter(this);
+        viewPager2 = view.findViewById(R.id.pager);
+        viewPager2.setAdapter(testAdapter);
+        TabLayout tabLayout = view.findViewById(R.id.tab_layout);
+        String[] tabTitles = new String[2];
+        tabTitles[0] = "Overview";
+        tabTitles[1] = "TimeLine";
+        new TabLayoutMediator(tabLayout, viewPager2,(tab, position) -> tab.setText(tabTitles[position])
+        ).attach();
+
     }
 
 //    @Override
@@ -136,6 +153,88 @@ public class ExpenseDetailsFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public class TestAdapter extends FragmentStateAdapter {
+        public TestAdapter(Fragment fragment) {
+            super(fragment);
+        }
+
+        @NonNull
+        @Override
+        public Fragment createFragment(int position) {
+            Fragment fragment;
+
+            switch (position) {
+                case 0:
+                    fragment = new TestObjFragment();
+                    return fragment;
+                case 1:
+                    fragment = new TestObjFragmentT();
+                    return fragment;
+                default:
+                    Log.d(TAG, "createFragment: Used default??");
+                    fragment = new TestObjFragment();
+                    return fragment;
+            }
+
+//            Fragment fragment = new TestObjFragment();
+//            Bundle args = new Bundle();
+//            args.putInt("First", position + 1);
+//            fragment.setArguments(args);
+//            return fragment;
+        }
+
+        @Override
+        public int getItemCount() {
+            return 2;
+        }
+    }
+
+    public static class TestObjFragment extends Fragment {
+        public static final String ARG_OBJECT = "Test";
+
+        @Nullable
+        @Override
+        public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                                 @Nullable Bundle savedInstanceState) {
+            return inflater.inflate(R.layout.fragment_first_page_expense_details, container, false);
+        }
+
+        @Override
+        public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+            Bundle args = getArguments();
+//            ViewPager2 viewPager = view.findViewById(R.id.pager);
+
+
+        }
+    }
+
+    public static class TestObjFragmentT extends Fragment {
+        public static final String ARG_OBJECT = "Test";
+        private ExpenseDrawableView customDrawableView;
+
+        @Nullable
+        @Override
+        public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                                 @Nullable Bundle savedInstanceState) {
+
+            View root = inflater.inflate(R.layout.fragment_second_page_expense_details, container, false);
+            LinearLayout layout = (LinearLayout) root.findViewById(R.id.linear_layout_expense_drawable);
+
+            customDrawableView = new ExpenseDrawableView(getContext());
+            layout.addView(customDrawableView);
+
+            return root;
+        }
+
+        @Override
+        public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+            Bundle args = getArguments();
+//            ViewPager2 viewPager = view.findViewById(R.id.pager);
+
+
+        }
     }
 
 }

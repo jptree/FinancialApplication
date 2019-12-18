@@ -31,10 +31,8 @@ public class ExpensesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         View v = inflater.inflate(R.layout.card_view_expense, parent, false);
 
 
-
-
         return new ExpenseHolder(v);
-        
+
     }
 
     @Override

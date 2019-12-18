@@ -16,19 +16,40 @@
         android:textAlignment="center"
         android:textSize="20sp" />
 
-    <ScrollView
-        android:id="@+id/scroll_view_drawable"
+    <Button
+        android:id="@+id/buttonLife"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp">
+        android:text="Life Picture Board" />
 
-        <LinearLayout
-            android:id="@+id/linear_layout_drawable"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
+    <Button
+        android:id="@+id/buttonLifeTimeline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Life Timeline" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical"
+        android:id="@+id/canvas_performance"/>
+
+    <Button
+        android:id="@+id/buttonAddData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Data" />
+
+    <Button
+        android:id="@+id/buttonAdvice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Get Advice" />
+
+    <Button
+        android:id="@+id/buttonReport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Report Errors" />
 
 </LinearLayout>

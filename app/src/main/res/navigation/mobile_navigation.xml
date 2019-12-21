@@ -16,6 +16,9 @@
         <argument
             android:name="testingData"
             app:argType="string" />
+        <action
+            android:id="@+id/action_navigation_home_to_lifeTimelineFragment"
+            app:destination="@id/lifeTimelineFragment" />
     </fragment>
 
     <fragment
@@ -48,4 +51,33 @@
         android:name="com.example.financialapplication.ui.life_picture_board.LifePictureBoardFragment"
         android:label="fragment_life_picture_board"
         tools:layout="@layout/fragment_life_picture_board" />
+    <fragment
+        android:id="@+id/lifeTimelineFragment"
+        android:name="com.example.financialapplication.ui.life_timeline.LifeTimelineFragment"
+        android:label="LifeTimelineFragment" >
+        <action
+            android:id="@+id/action_lifeTimelineFragment_to_lifeTimelineSelectorFragment"
+            app:destination="@id/lifeTimelineSelectorFragment"
+            app:enterAnim="@anim/slide_up" />
+    </fragment>
+    <fragment
+        android:id="@+id/lifeTimelineSelectorFragment"
+        android:name="com.example.financialapplication.ui.life_timeline_selections.LifeTimelineSelectorFragment"
+        android:label="fragment_life_timeline_selector"
+        tools:layout="@layout/fragment_life_timeline_selector" >
+        <action
+            android:id="@+id/action_lifeTimelineSelectorFragment_to_lifeEventDetailsFragment"
+            app:destination="@id/lifeEventDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/lifeEventDetailsFragment"
+        android:name="com.example.financialapplication.ui.life_timeline_selections.LifeEventDetailsFragment">
+        <argument
+            android:name="imageReference"
+            app:argType="integer"/>
+        <action
+            android:id="@+id/action_lifeEventDetailsFragment_to_lifeTimelineFragment"
+            app:destination="@id/lifeTimelineFragment"
+            app:popUpTo="@+id/lifeTimelineFragment" />
+    </fragment>
 </navigation>

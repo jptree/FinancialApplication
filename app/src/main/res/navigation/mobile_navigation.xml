@@ -78,6 +78,7 @@
         <action
             android:id="@+id/action_lifeEventDetailsFragment_to_lifeTimelineFragment"
             app:destination="@id/lifeTimelineFragment"
-            app:popUpTo="@+id/lifeTimelineFragment" />
+            app:popUpTo="@+id/lifeTimelineFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

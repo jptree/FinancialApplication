@@ -1,4 +1,4 @@
-package com.example.financialapplication.ui.life_timeline_selections;
+package com.example.financialapplication.ui.life_timeline.life_timeline_selections;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -16,8 +16,6 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;

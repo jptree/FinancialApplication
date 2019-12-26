@@ -1,4 +1,4 @@
-package com.example.financialapplication.ui.life_timeline_selections;
+package com.example.financialapplication.ui.life_timeline.life_timeline_selections;
 
 import androidx.lifecycle.ViewModel;
 

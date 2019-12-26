@@ -1,4 +1,4 @@
-package com.example.financialapplication.ui.expense_details;
+package com.example.financialapplication.ui.expenses.expense_details;
 
 import android.net.Uri;
 import android.os.Bundle;

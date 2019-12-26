@@ -6,13 +6,17 @@ import android.os.AsyncTask;
 import com.example.financialapplication.db.dao.LifeEventDao;
 import com.example.financialapplication.db.entity.LifeEventEntity;
 
+import java.util.Date;
+
 import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {LifeEventEntity.class}, version = 1, exportSchema = false)
+@Database(entities = {LifeEventEntity.class}, version = 2, exportSchema = false)
+@TypeConverters({DateConverters.class})
 public abstract class LifeEventDatabase extends RoomDatabase {
     private static LifeEventDatabase instance;
 
@@ -45,7 +49,7 @@ public abstract class LifeEventDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            lifeEventDao.insert(new LifeEventEntity("Purchase House!", 2131165316));
+            lifeEventDao.insert(new LifeEventEntity("Purchase House!", 2131165316, new Date(2019,2,20)));
             return null;
         }
     }

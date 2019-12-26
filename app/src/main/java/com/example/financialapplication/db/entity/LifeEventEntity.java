@@ -1,7 +1,10 @@
 package com.example.financialapplication.db.entity;
 
+import java.util.Date;
+
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
 @Entity(tableName = "life_events_table")
 public class LifeEventEntity {
@@ -10,9 +13,13 @@ public class LifeEventEntity {
     private String eventName;
     private int imageId;
 
-    public LifeEventEntity(String eventName, int imageId) {
+    private Date beginningDate;
+
+
+    public LifeEventEntity(String eventName, int imageId, Date beginningDate) {
         this.eventName = eventName;
         this.imageId = imageId;
+        this.beginningDate = beginningDate;
     }
 
     public void setId(int id) {
@@ -29,5 +36,9 @@ public class LifeEventEntity {
 
     public int getImageId() {
         return imageId;
+    }
+
+    public Date getBeginningDate() {
+        return beginningDate;
     }
 }

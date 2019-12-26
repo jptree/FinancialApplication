@@ -1,9 +1,8 @@
-package com.example.financialapplication.ui.life_timeline_selections;
+package com.example.financialapplication.ui.life_timeline.life_timeline_selections;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.example.financialapplication.R;
 

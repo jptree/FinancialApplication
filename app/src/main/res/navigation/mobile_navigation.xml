@@ -38,7 +38,7 @@
         tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/ExpenseDetailsFragment"
-        android:name="com.example.financialapplication.ui.expense_details.ExpenseDetailsFragment"
+        android:name="com.example.financialapplication.ui.expenses.expense_details.ExpenseDetailsFragment"
         android:label="{expense} Details"
         tools:layout="@layout/fragment_expense_details">
         <argument
@@ -62,7 +62,7 @@
     </fragment>
     <fragment
         android:id="@+id/lifeTimelineSelectorFragment"
-        android:name="com.example.financialapplication.ui.life_timeline_selections.LifeTimelineSelectorFragment"
+        android:name="com.example.financialapplication.ui.life_timeline.life_timeline_selections.LifeTimelineSelectorFragment"
         android:label="fragment_life_timeline_selector"
         tools:layout="@layout/fragment_life_timeline_selector" >
         <action
@@ -71,7 +71,7 @@
     </fragment>
     <fragment
         android:id="@+id/lifeEventDetailsFragment"
-        android:name="com.example.financialapplication.ui.life_timeline_selections.LifeEventDetailsFragment">
+        android:name="com.example.financialapplication.ui.life_timeline.life_timeline_selections.LifeEventDetailsFragment">
         <argument
             android:name="imageReference"
             app:argType="integer"/>

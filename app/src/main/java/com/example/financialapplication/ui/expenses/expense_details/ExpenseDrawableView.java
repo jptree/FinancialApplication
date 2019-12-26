@@ -1,20 +1,14 @@
-package com.example.financialapplication.ui.expense_details;
+package com.example.financialapplication.ui.expenses.expense_details;
 
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.OvalShape;
 import android.graphics.drawable.shapes.RectShape;
 import android.text.TextPaint;
-import android.util.Log;
 import android.view.View;
-
-
-import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class ExpenseDrawableView extends View {
     private Path path;

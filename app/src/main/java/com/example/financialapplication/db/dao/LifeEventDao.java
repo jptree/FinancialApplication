@@ -28,7 +28,7 @@ public interface LifeEventDao {
     @Query("DELETE FROM life_events_table WHERE imageId =:imageId")
     void deleteLifeEventById(int imageId);
 
-    @Query("SELECT * FROM life_events_table ORDER BY eventName DESC")
+    @Query("SELECT * FROM life_events_table ORDER BY beginningDate ASC")
     LiveData<List<LifeEventEntity>> getAllLifeEvents();
 
 //    @Query("SELECT * FROM life_events_table ORDER BY eventName DESC")

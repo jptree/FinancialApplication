@@ -1,10 +1,11 @@
-package com.example.financialapplication.db;
+package com.example.financialapplication.db.repository;
 
 import android.app.Application;
 import android.os.AsyncTask;
 import android.util.Log;
 
 import com.example.financialapplication.db.dao.LifeEventDao;
+import com.example.financialapplication.db.database.LifeEventDatabase;
 import com.example.financialapplication.db.entity.LifeEventEntity;
 
 import java.util.List;

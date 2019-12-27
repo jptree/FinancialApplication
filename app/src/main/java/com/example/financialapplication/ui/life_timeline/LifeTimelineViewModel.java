@@ -2,7 +2,7 @@ package com.example.financialapplication.ui.life_timeline;
 
 import android.app.Application;
 
-import com.example.financialapplication.db.LifeEventRepository;
+import com.example.financialapplication.db.repository.LifeEventRepository;
 import com.example.financialapplication.db.entity.LifeEventEntity;
 
 import java.util.List;

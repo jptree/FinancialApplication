@@ -1,8 +1,9 @@
-package com.example.financialapplication.db;
+package com.example.financialapplication.db.database;
 
 import android.content.Context;
 import android.os.AsyncTask;
 
+import com.example.financialapplication.db.DateConverters;
 import com.example.financialapplication.db.dao.LifeEventDao;
 import com.example.financialapplication.db.entity.LifeEventEntity;
 

@@ -17,8 +17,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.financialapplication.R;
+import com.example.financialapplication.ReadingCSV.CSVReader;
 
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
@@ -45,18 +49,37 @@ public class ExpensesFragment extends Fragment {
 
         recyclerView = (RecyclerView) root.findViewById(R.id.recycler_view_expense_categories);
 
-        layoutManager = new GridLayoutManager(getContext(), 2);
+        layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
 
         myDataset = new ArrayList<>();
+        myDataset.add("Home and Utilities");
+        myDataset.add("Transportation");
         myDataset.add("Groceries");
-        myDataset.add("Rent");
-        myDataset.add("Shopping");
+        myDataset.add("Personal and Family Care");
+        myDataset.add("Health");
+        myDataset.add("Insurance");
+        myDataset.add("Restaurants and Dining");
+        myDataset.add("Shopping and Entertainment");
+        myDataset.add("Travel");
+        myDataset.add("Cash/Checks/Miscellaneous");
+        myDataset.add("Giving");
+        myDataset.add("Business Expenses");
         myDataset.add("Education");
-        myDataset.add("Motgan");
-        myDataset.add("Yeeting");
-        myDataset.add("Yeeting2");
+        myDataset.add("Finance");
+        myDataset.add("Uncategorized");
 
+        InputStream inputStream = getResources().openRawResource(R.raw.data);
+        CSVReader yes = new CSVReader(inputStream);
+        List<String[]> dataList = yes.readData();
+
+//        for (int i = 0; i < dataList.size(); i++) {
+//            Log.d(TAG, "onCreateView: " + Arrays.toString(dataList.get(i)));
+//        }
+
+        for (String[] gen:dataList) {
+            Log.d(TAG, "onCreateView: " + gen[0]);
+        }
 
         mAdapter = new ExpensesAdapter(getContext(), myDataset);
         recyclerView.setAdapter(mAdapter);

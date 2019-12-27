@@ -1,4 +1,4 @@
-package com.example.financialapplication.ui.expense_details;
+package com.example.financialapplication.ui.expenses.expense_details;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

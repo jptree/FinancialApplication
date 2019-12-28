@@ -17,13 +17,11 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
 public class LifeEventRepository {
     private LifeEventDao lifeEventDao;
     private LiveData<List<LifeEventEntity>> allLifeEvents;
-    private List<LifeEventEntity> allLifeEventsStatic;
 
     public LifeEventRepository(Application application) {
         LifeEventDatabase database = LifeEventDatabase.getInstance(application);
         lifeEventDao = database.lifeEventDao();
         allLifeEvents = lifeEventDao.getAllLifeEvents();
-//        allLifeEventsStatic = lifeEventDao.getAllLifeEventsStatic();
     }
 
     public void update(LifeEventEntity lifeEventEntity) {
@@ -50,9 +48,6 @@ public class LifeEventRepository {
         return allLifeEvents;
     }
 
-    public List<LifeEventEntity> getAllLifeEventsStatic() {
-        return allLifeEventsStatic;
-    }
 
     private static class InsertLifeEventEntityAsyncTask extends AsyncTask<LifeEventEntity, Void, Void> {
         private LifeEventDao lifeEventDao;

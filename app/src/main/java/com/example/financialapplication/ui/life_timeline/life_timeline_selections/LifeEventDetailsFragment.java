@@ -68,7 +68,7 @@ public class LifeEventDetailsFragment extends Fragment {
                         new DatePickerDialog.OnDateSetListener() {
                     @Override
                             public void onDateSet(DatePicker view, int year, int month, int day) {
-                        editTextDate.setText(year + "/" + month +"/" + day);
+                        editTextDate.setText(year + "/" + month + 1 +"/" + day);
                     }
                         }, year, month, day);
                 datePickerDialog[0].show();

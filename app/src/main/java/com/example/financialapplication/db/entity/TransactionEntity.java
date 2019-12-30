@@ -1,5 +1,6 @@
 package com.example.financialapplication.db.entity;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import androidx.room.Entity;
@@ -10,7 +11,7 @@ public class TransactionEntity {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    private Date transactionDate;
+    private Calendar transactionDate;
     private float transactionAmount;
     private String classification;
     private String category;
@@ -18,7 +19,7 @@ public class TransactionEntity {
     private String merchantName;
     private int merchantCode;
 
-    public TransactionEntity(Date transactionDate, float transactionAmount, String classification,
+    public TransactionEntity(Calendar transactionDate, float transactionAmount, String classification,
                              String category, String subcategory, String merchantName, int merchantCode) {
         this.transactionDate = transactionDate;
         this.transactionAmount = transactionAmount;
@@ -37,7 +38,7 @@ public class TransactionEntity {
         return id;
     }
 
-    public Date getTransactionDate() {
+    public Calendar getTransactionDate() {
         return transactionDate;
     }
 

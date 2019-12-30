@@ -1,5 +1,6 @@
 package com.example.financialapplication.db.entity;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import androidx.room.Entity;
@@ -13,10 +14,10 @@ public class LifeEventEntity {
     private String eventName;
     private int imageId;
 
-    private Date beginningDate;
+    private Calendar beginningDate;
 
 
-    public LifeEventEntity(String eventName, int imageId, Date beginningDate) {
+    public LifeEventEntity(String eventName, int imageId, Calendar beginningDate) {
         this.eventName = eventName;
         this.imageId = imageId;
         this.beginningDate = beginningDate;
@@ -38,7 +39,7 @@ public class LifeEventEntity {
         return imageId;
     }
 
-    public Date getBeginningDate() {
+    public Calendar getBeginningDate() {
         return beginningDate;
     }
 }

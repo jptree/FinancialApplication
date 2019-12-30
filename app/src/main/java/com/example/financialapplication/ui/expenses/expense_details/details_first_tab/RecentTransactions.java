@@ -2,6 +2,7 @@ package com.example.financialapplication.ui.expenses.expense_details.details_fir
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,11 +11,16 @@ import android.widget.TextView;
 import com.example.financialapplication.R;
 import com.example.financialapplication.db.entity.TransactionEntity;
 
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class RecentTransactions extends RecyclerView.Adapter<RecentTransactions.TransactionHolder>{
 
@@ -39,7 +45,9 @@ public class RecentTransactions extends RecyclerView.Adapter<RecentTransactions.
 
 //        mImageDrawable = context.getResources().getDrawable(mTransactionEntity.getImageId());
         holder.textViewMerchantName.setText(mTransactionEntity.getMerchantName());
-        holder.textViewDate.setText((String) mTransactionEntity.getTransactionDate().toString());
+        SimpleDateFormat formatter = new SimpleDateFormat("MMMM dd, yyyy", Locale.US);
+        String formattedDate = formatter.format(mTransactionEntity.getTransactionDate().getTime());
+        holder.textViewDate.setText(formattedDate);
         holder.textViewAmount.setText(String.valueOf(mTransactionEntity.getTransactionAmount()));
     }
 

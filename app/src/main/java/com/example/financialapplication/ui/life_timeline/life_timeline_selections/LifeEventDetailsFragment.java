@@ -28,6 +28,9 @@ import androidx.navigation.Navigation;
 
 public class LifeEventDetailsFragment extends Fragment {
     LifeTimelineViewModel lifeTimelineViewModel;
+    int year = 0;
+    int month = 0;
+    int day = 0;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_life_event_details, container, false);
@@ -46,7 +49,10 @@ public class LifeEventDetailsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String newLifeEventText = editTextLifeEventTitle.getText().toString();
-                LifeEventEntity newLifeEvent = new LifeEventEntity(newLifeEventText, imageId, new Date(editTextDate.getText().toString()));
+                String[] editDateText = editTextDate.getText().toString().split(",");
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(Integer.parseInt(editDateText[0]), Integer.parseInt(editDateText[1]), Integer.parseInt(editDateText[2]));
+                LifeEventEntity newLifeEvent = new LifeEventEntity(newLifeEventText, imageId, calendar);
                 lifeTimelineViewModel.insertLifeEvent(newLifeEvent);
 
 
@@ -55,6 +61,7 @@ public class LifeEventDetailsFragment extends Fragment {
             }
         });
         DatePickerDialog[] datePickerDialog = new DatePickerDialog[1];
+
 
         editTextDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,8 +74,9 @@ public class LifeEventDetailsFragment extends Fragment {
                         android.R.style.Theme_Holo_Dialog,
                         new DatePickerDialog.OnDateSetListener() {
                     @Override
-                            public void onDateSet(DatePicker view, int year, int month, int day) {
+                    public void onDateSet(DatePicker view, int year, int month, int day) {
                         editTextDate.setText(year + "/" + month + 1 +"/" + day);
+
                     }
                         }, year, month, day);
                 datePickerDialog[0].show();

@@ -24,54 +24,50 @@
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
     <loaded-nodes>
-      <connection connection-id="d3c895f7-8518-4708-b413-3c9afc885c39">
-        <schema name="main" object-types="column, constraint, view, table, dataset trigger, index" />
+      <connection connection-id="a93b8355-4dee-4f2b-b6b0-17003c9ca790">
+        <schema name="main" object-types="view, table" />
       </connection>
-      <connection connection-id="9e32923e-9c28-42ec-a4d7-54c9f36c912f">
-        <schema name="main" object-types="column, constraint, view, table, dataset trigger, index" />
+      <connection connection-id="0a54e809-7f24-4188-b0c2-d463d89c8293">
+        <schema name="main" object-types="view, table" />
+      </connection>
+      <connection connection-id="6be0248b-784c-4c62-9356-f6cebaba50fd">
+        <schema name="main" object-types="view, table" />
+      </connection>
+      <connection connection-id="35537eff-02b3-4f56-abad-4fda0a925776">
+        <schema name="main" object-types="column, view, constraint, table, dataset trigger, index" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="d3c895f7-8518-4708-b413-3c9afc885c39">
+    <connection id="a93b8355-4dee-4f2b-b6b0-17003c9ca790">
       <console name="Connection" type="STANDARD" schema="main" session="Main" />
     </connection>
-    <connection id="9e32923e-9c28-42ec-a4d7-54c9f36c912f">
-      <console name="Connection 1" type="STANDARD" schema="" session="Main" />
+    <connection id="0a54e809-7f24-4188-b0c2-d463d89c8293">
+      <console name="Connection 1" type="STANDARD" schema="main" session="Main" />
     </connection>
-    <connection id="396e14a1-f61b-44ae-b063-caf30073bbfb">
-      <console name="Connection 2" type="STANDARD" schema="" session="Main" />
+    <connection id="6be0248b-784c-4c62-9356-f6cebaba50fd">
+      <console name="Connection 2" type="STANDARD" schema="main" session="Main" />
     </connection>
-    <connection id="9cc25af5-a244-4ab3-a907-21a44077e715">
-      <console name="Connection 3" type="STANDARD" schema="" session="Main" />
-    </connection>
-    <connection id="0159312a-eb97-4d3e-ad6f-468b835bb3b2">
-      <console name="Connection 4" type="STANDARD" schema="" session="Main" />
+    <connection id="35537eff-02b3-4f56-abad-4fda0a925776">
+      <console name="Connection 3" type="STANDARD" schema="main" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files>
-      <object connection-id="d3c895f7-8518-4708-b413-3c9afc885c39" object-ref="schemas/main/tables/life_events_table" />
-      <object connection-id="9e32923e-9c28-42ec-a4d7-54c9f36c912f" object-ref="schemas/main/tables/transactions_table" />
+      <object connection-id="35537eff-02b3-4f56-abad-4fda0a925776" object-ref="schemas/main/tables/transactions_table" />
     </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="d3c895f7-8518-4708-b413-3c9afc885c39" />
-    <connection id="9e32923e-9c28-42ec-a4d7-54c9f36c912f" />
-    <connection id="396e14a1-f61b-44ae-b063-caf30073bbfb" />
-    <connection id="9cc25af5-a244-4ab3-a907-21a44077e715" />
-    <connection id="0159312a-eb97-4d3e-ad6f-468b835bb3b2" />
+    <connection id="a93b8355-4dee-4f2b-b6b0-17003c9ca790" />
+    <connection id="0a54e809-7f24-4188-b0c2-d463d89c8293" />
+    <connection id="6be0248b-784c-4c62-9356-f6cebaba50fd" />
+    <connection id="35537eff-02b3-4f56-abad-4fda0a925776" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="d3c895f7-8518-4708-b413-3c9afc885c39" dataset="main.life_events_table" active-filter-id="EMPTY_FILTER">
-      <filter id="478bcf67-addc-4d2d-b5da-4b890876e964" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND">
-        <condition column="id" operator="=" value="" active="true" />
-      </filter>
-    </filter-actions>
-    <filter-actions connection-id="d3c895f7-8518-4708-b413-3c9afc885c39" dataset="main.room_master_table" active-filter-id="" />
-    <filter-actions connection-id="d3c895f7-8518-4708-b413-3c9afc885c39" dataset="main.android_metadata" active-filter-id="" />
-    <filter-actions connection-id="9e32923e-9c28-42ec-a4d7-54c9f36c912f" dataset="main.transactions_table" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="9e32923e-9c28-42ec-a4d7-54c9f36c912f" dataset="main.android_metadata" active-filter-id="" />
+    <filter-actions connection-id="0a54e809-7f24-4188-b0c2-d463d89c8293" dataset="main.transactions_table" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="a93b8355-4dee-4f2b-b6b0-17003c9ca790" dataset="main.transactions_table" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="6be0248b-784c-4c62-9356-f6cebaba50fd" dataset="main.life_events_table" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="35537eff-02b3-4f56-abad-4fda0a925776" dataset="main.transactions_table" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -96,7 +92,7 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="d3c895f7-8518-4708-b413-3c9afc885c39" active="true">
+      <connection id="a93b8355-4dee-4f2b-b6b0-17003c9ca790" active="true">
         <database>
           <name value="Connection" />
           <description value="" />
@@ -111,7 +107,7 @@
           <port value="1234" />
           <database value="database" />
           <files>
-            <file path="C:\Users\jason\Downloads\life_event_database" schema="main" />
+            <file path="C:\Users\jason\OneDrive\Documents\AndroidStudio\DeviceExplorer\Pixel_XL_API_28 [emulator-5554]\data\data\com.example.financialapplication\databases\transaction_database" schema="main" />
           </files>
           <type value="NONE" />
           <user value="" />
@@ -182,7 +178,7 @@
           <object-name-filters />
         </object-filters>
       </connection>
-      <connection id="9e32923e-9c28-42ec-a4d7-54c9f36c912f" active="true">
+      <connection id="0a54e809-7f24-4188-b0c2-d463d89c8293" active="true">
         <database>
           <name value="Connection 1" />
           <description value="" />
@@ -197,8 +193,7 @@
           <port value="1234" />
           <database value="database" />
           <files>
-            <file path="C:\Users\jason\Downloads\transaction_database" schema="main" />
-            <file path="C:\Users\jason\Downloads\transaction_database" schema="main" />
+            <file path="C:\Users\jason\Desktop\transaction_database" schema="main" />
           </files>
           <type value="NONE" />
           <user value="" />
@@ -269,13 +264,13 @@
           <object-name-filters />
         </object-filters>
       </connection>
-      <connection id="396e14a1-f61b-44ae-b063-caf30073bbfb" active="true">
+      <connection id="6be0248b-784c-4c62-9356-f6cebaba50fd" active="true">
         <database>
           <name value="Connection 2" />
           <description value="" />
           <database-type value="SQLITE" />
           <config-type value="BASIC" />
-          <database-version value="9999.0" />
+          <database-version value="3.21" />
           <driver-source value="BUILTIN" />
           <driver-library value="" />
           <driver value="" />
@@ -284,7 +279,7 @@
           <port value="1234" />
           <database value="database" />
           <files>
-            <file path="sqlite.db" schema="main" />
+            <file path="C:\Users\jason\OneDrive\Documents\AndroidStudio\DeviceExplorer\Pixel_XL_API_28 [emulator-5554]\data\data\com.example.financialapplication\databases\life_event_database" schema="main" />
           </files>
           <type value="NONE" />
           <user value="" />
@@ -355,13 +350,13 @@
           <object-name-filters />
         </object-filters>
       </connection>
-      <connection id="9cc25af5-a244-4ab3-a907-21a44077e715" active="true">
+      <connection id="35537eff-02b3-4f56-abad-4fda0a925776" active="true">
         <database>
           <name value="Connection 3" />
           <description value="" />
           <database-type value="SQLITE" />
           <config-type value="BASIC" />
-          <database-version value="9999.0" />
+          <database-version value="3.21" />
           <driver-source value="BUILTIN" />
           <driver-library value="" />
           <driver value="" />
@@ -370,93 +365,9 @@
           <port value="1234" />
           <database value="database" />
           <files>
-            <file path="sqlite.db" schema="main" />
-          </files>
-          <type value="NONE" />
-          <user value="" />
-          <deprecated-pwd value="" />
-        </database>
-        <properties>
-          <auto-commit value="false" />
-        </properties>
-        <ssh-settings>
-          <active value="false" />
-          <proxy-host value="" />
-          <proxy-port value="22" />
-          <proxy-user value="" />
-          <deprecated-proxy-pwd value="" />
-          <auth-type value="PASSWORD" />
-          <key-file value="" />
-          <key-passphrase value="" />
-        </ssh-settings>
-        <ssl-settings>
-          <active value="false" />
-          <certificate-authority-file value="" />
-          <client-certificate-file value="" />
-          <client-key-file value="" />
-        </ssl-settings>
-        <details>
-          <charset value="UTF-8" />
-          <session-management value="true" />
-          <ddl-file-binding value="true" />
-          <database-logging value="false" />
-          <connect-automatically value="true" />
-          <restore-workspace value="true" />
-          <restore-workspace-deep value="true" />
-          <environment-type value="default" />
-          <idle-time-to-disconnect value="30" />
-          <idle-time-to-disconnect-pool value="5" />
-          <credential-expiry-time value="10" />
-          <max-connection-pool-size value="7" />
-          <alternative-statement-delimiter value="" />
-        </details>
-        <object-filters hide-empty-schemas="false" hide-pseudo-columns="false">
-          <object-type-filter use-master-settings="true">
-            <object-type name="SCHEMA" enabled="true" />
-            <object-type name="USER" enabled="true" />
-            <object-type name="ROLE" enabled="true" />
-            <object-type name="PRIVILEGE" enabled="true" />
-            <object-type name="CHARSET" enabled="true" />
-            <object-type name="TABLE" enabled="true" />
-            <object-type name="VIEW" enabled="true" />
-            <object-type name="MATERIALIZED_VIEW" enabled="true" />
-            <object-type name="NESTED_TABLE" enabled="true" />
-            <object-type name="COLUMN" enabled="true" />
-            <object-type name="INDEX" enabled="true" />
-            <object-type name="CONSTRAINT" enabled="true" />
-            <object-type name="DATASET_TRIGGER" enabled="true" />
-            <object-type name="DATABASE_TRIGGER" enabled="true" />
-            <object-type name="SYNONYM" enabled="true" />
-            <object-type name="SEQUENCE" enabled="true" />
-            <object-type name="PROCEDURE" enabled="true" />
-            <object-type name="FUNCTION" enabled="true" />
-            <object-type name="PACKAGE" enabled="true" />
-            <object-type name="TYPE" enabled="true" />
-            <object-type name="TYPE_ATTRIBUTE" enabled="true" />
-            <object-type name="ARGUMENT" enabled="true" />
-            <object-type name="DIMENSION" enabled="true" />
-            <object-type name="CLUSTER" enabled="true" />
-            <object-type name="DBLINK" enabled="true" />
-          </object-type-filter>
-          <object-name-filters />
-        </object-filters>
-      </connection>
-      <connection id="0159312a-eb97-4d3e-ad6f-468b835bb3b2" active="true">
-        <database>
-          <name value="Connection 4" />
-          <description value="" />
-          <database-type value="SQLITE" />
-          <config-type value="BASIC" />
-          <database-version value="9999.0" />
-          <driver-source value="BUILTIN" />
-          <driver-library value="" />
-          <driver value="" />
-          <url-type value="FILE" />
-          <host value="localhost" />
-          <port value="1234" />
-          <database value="database" />
-          <files>
-            <file path="sqlite.db" schema="main" />
+            <file path="C:\Users\jason\Desktop\transaction_database" schema="main" />
+            <file path="C:\Users\jason\Desktop\transaction_database-shm" schema="" />
+            <file path="C:\Users\jason\Desktop\transaction_database-wal" schema="" />
           </files>
           <type value="NONE" />
           <user value="" />

@@ -2,24 +2,28 @@ package com.example.financialapplication.db.repository;
 
 import android.app.Application;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.example.financialapplication.db.dao.TransactionDao;
 import com.example.financialapplication.db.database.TransactionDatabase;
 import com.example.financialapplication.db.entity.TransactionEntity;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import androidx.lifecycle.LiveData;
+
+import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class TransactionRepository {
 
     private TransactionDao transactionDao;
     private LiveData<List<TransactionEntity>> allTransactions;
+    private List<TransactionEntity> specifiedTransactions;
 
     public TransactionRepository(Application application) {
         TransactionDatabase database = TransactionDatabase.getInstance(application);
         transactionDao = database.transactionDao();
-        allTransactions = transactionDao.getAllTransactions();
     }
 
     public void update(TransactionEntity transactionEntity) {
@@ -43,9 +47,40 @@ public class TransactionRepository {
     }
 
     public LiveData<List<TransactionEntity>> getAllTransactions() {
+        allTransactions = transactionDao.getAllTransactions();
         return allTransactions;
     }
 
+//    public LiveData<List<TransactionEntity>> getTest(float value) {
+//        return transactionDao.getTest();
+//    }
+
+    public List<TransactionEntity> getSpecifiedTransactions(float minValue, float maxValue) {
+//        specifiedTransactions = transactionDao.getSpecificTransactions(minValue);
+////        Log.d(TAG, "getSpecifiedTransactions: " + specifiedTransactions.getValue());
+//        return specifiedTransactions;
+        try {
+            return new GetSpecificTransactionsAsyncTask(transactionDao).execute(minValue, maxValue).get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+    private static class GetSpecificTransactionsAsyncTask extends AsyncTask<Float, Void, List<TransactionEntity>> {
+        private TransactionDao transactionDao;
+
+        private GetSpecificTransactionsAsyncTask(TransactionDao transactionDao) {
+            this.transactionDao = transactionDao;
+        }
+        @Override
+        protected List<TransactionEntity> doInBackground(Float... floats) {
+            return transactionDao.getSpecificTransactions(floats[0], floats[1]);
+        }
+    }
 
     private static class InsertTransactionEntityAsyncTask extends AsyncTask<TransactionEntity, Void, Void> {
         private TransactionDao transactionDao;

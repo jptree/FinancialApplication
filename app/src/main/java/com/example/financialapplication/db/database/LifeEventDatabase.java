@@ -7,6 +7,7 @@ import com.example.financialapplication.db.DateConverters;
 import com.example.financialapplication.db.dao.LifeEventDao;
 import com.example.financialapplication.db.entity.LifeEventEntity;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import androidx.annotation.NonNull;
@@ -16,7 +17,7 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {LifeEventEntity.class}, version = 2, exportSchema = false)
+@Database(entities = {LifeEventEntity.class}, version = 3, exportSchema = false)
 @TypeConverters({DateConverters.class})
 public abstract class LifeEventDatabase extends RoomDatabase {
     private static LifeEventDatabase instance;
@@ -50,7 +51,9 @@ public abstract class LifeEventDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            lifeEventDao.insert(new LifeEventEntity("Purchase House!", 2131165316, new Date(2019,2,20)));
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(2019, 4, 10);
+            lifeEventDao.insert(new LifeEventEntity("Purchase House!", 2131165316, calendar));
             return null;
         }
     }

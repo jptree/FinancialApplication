@@ -79,7 +79,7 @@ public class DetailsFirstTabFragment extends Fragment {
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(2019, 3, 30);
-        viewModel.insertTransaction(new TransactionEntity(calendar, (float) 122.34, "expense", "Home/Utilities", "Home Improvement", "Home Depot", 1234));
+//        viewModel.insertTransaction(new TransactionEntity(calendar, (float) 122.34, "expense", "Home/Utilities", "Home Improvement", "Home Depot", 1234));
 
 
         viewModel.getSpecifiedTransactions(1577549491871L, 1580227891871L);

@@ -41,4 +41,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/text_notifications" />
 
+
 </androidx.constraintlayout.widget.ConstraintLayout>

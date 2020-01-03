@@ -9,6 +9,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
+import androidx.room.Embedded;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
@@ -33,4 +34,27 @@ public interface TransactionDao {
     @Query("SELECT * FROM transactions_table WHERE transactionDate BETWEEN :minValue AND :maxValue ORDER BY transactionDate ASC")
     List<TransactionEntity> getSpecificTransactions(float minValue, float maxValue);
 
+    @Query("SELECT SUM(transactionAmount) AS sum, subcategory AS subcategoryName FROM transactions_table WHERE transactionDate BETWEEN :minValue AND :maxValue GROUP BY subcategory")
+    List<SubcategorySum> getSubcategorySum(float minValue, float maxValue);
+
+    class SubcategorySum {
+        String subcategoryName;
+        Float sum;
+
+        public void setSubcategoryName(String subcategoryName) {
+            this.subcategoryName = subcategoryName;
+        }
+
+        public void setSum(Float sum) {
+            this.sum = sum;
+        }
+
+        public Float getSum() {
+            return sum;
+        }
+
+        public String getSubcategoryName() {
+            return subcategoryName;
+        }
+    }
 }

@@ -9,8 +9,12 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.example.financialapplication.R;
+import com.example.financialapplication.db.dao.TransactionDao;
+//import com.example.financialapplication.db.entity.SubcategoryEntity;
 import com.example.financialapplication.db.entity.TransactionEntity;
+import com.example.financialapplication.ui.PieChart;
 
+import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -21,6 +25,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -42,6 +47,7 @@ public class DetailsFirstTabFragment extends Fragment {
     private List<TransactionEntity> transactionEntitiesList;
     List<Long[]> dateRanges = new ArrayList<>();
     private TextView testing;
+    private PieChart pieChart;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,8 +87,10 @@ public class DetailsFirstTabFragment extends Fragment {
         calendar.set(2019, 3, 30);
 //        viewModel.insertTransaction(new TransactionEntity(calendar, (float) 122.34, "expense", "Home/Utilities", "Home Improvement", "Home Depot", 1234));
 
+        pieChart = root.findViewById(R.id.pieChartTransactions);
 
         viewModel.getSpecifiedTransactions(1577549491871L, 1580227891871L);
+        viewModel.postSubcategorySumList(1577549491871L, 1580227891871L);
 
         viewModel.getTransactionsList().observe(this, new Observer<List<TransactionEntity>>() {
             @Override
@@ -90,7 +98,19 @@ public class DetailsFirstTabFragment extends Fragment {
                 if (transactionEntities != null) {
                     adapter.setTransactionEntityList(transactionEntities);
                     transactionEntitiesList = transactionEntities;
-                } // if else, show nothing statement
+//                    Log.d(TAG, "onChanged: " + transactionEntities.get(1));
+
+                }
+            }
+        });
+
+        viewModel.getSubcategorySumList().observe(this, new Observer<List<TransactionDao.SubcategorySum>>() {
+            @Override
+            public void onChanged(List<TransactionDao.SubcategorySum> subcategoryEntities) {
+                if (subcategoryEntities != null) {
+                    pieChart.setExpenseData(subcategoryEntities);
+
+                }
             }
         });
 
@@ -145,13 +165,20 @@ public class DetailsFirstTabFragment extends Fragment {
                     }
                 }
             }
-//            testing.setText(subcategories.values().toString());
-            Log.d(TAG, "onStopTrackingTouch: " + subcategories.keySet());
-            Log.d(TAG, "onStopTrackingTouch: " + subcategories.values());
 
             viewModel.getSpecifiedTransactions(getDateRange(progressValue)[0], getDateRange(progressValue)[1]);
-            Log.d(TAG, "onStopTrackingTouch: " + getDateRange(progressValue)[0]);
-            Log.d(TAG, "onStopTrackingTouch: " + getDateRange(progressValue)[1]);
+            viewModel.postSubcategorySumList(getDateRange(progressValue)[0], getDateRange(progressValue)[1]);
+//            String[] subcategoriesName = new String[subcategories.keySet().size()];
+//            Float[] subcategoriesValue = new Float[subcategories.keySet().size()];
+
+//            int i = 0;
+//            for (Map.Entry<String, Float> entry : subcategories.entrySet()) {
+//                subcategoriesName[i] = entry.getKey();
+//                subcategoriesValue[i] = entry.getValue();
+//                i += 1;
+//            }
+//            pieChart.setExpenseData(subcategoriesName, subcategoriesValue);
+
         }
     };
 

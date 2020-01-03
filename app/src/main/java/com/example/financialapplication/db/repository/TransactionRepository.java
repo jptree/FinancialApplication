@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.example.financialapplication.db.dao.TransactionDao;
 import com.example.financialapplication.db.database.TransactionDatabase;
+//import com.example.financialapplication.db.entity.SubcategoryEntity;
 import com.example.financialapplication.db.entity.TransactionEntity;
 
 import java.util.List;
@@ -51,14 +52,7 @@ public class TransactionRepository {
         return allTransactions;
     }
 
-//    public LiveData<List<TransactionEntity>> getTest(float value) {
-//        return transactionDao.getTest();
-//    }
-
     public List<TransactionEntity> getSpecifiedTransactions(float minValue, float maxValue) {
-//        specifiedTransactions = transactionDao.getSpecificTransactions(minValue);
-////        Log.d(TAG, "getSpecifiedTransactions: " + specifiedTransactions.getValue());
-//        return specifiedTransactions;
         try {
             return new GetSpecificTransactionsAsyncTask(transactionDao).execute(minValue, maxValue).get();
         } catch (ExecutionException e) {
@@ -79,6 +73,30 @@ public class TransactionRepository {
         @Override
         protected List<TransactionEntity> doInBackground(Float... floats) {
             return transactionDao.getSpecificTransactions(floats[0], floats[1]);
+        }
+    }
+
+    public List<TransactionDao.SubcategorySum> getSubcategorySum(float minValue, float maxValue) {
+        try {
+            return new GetSubcategorySumAsyncTask(transactionDao).execute(minValue, maxValue).get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+    private static class GetSubcategorySumAsyncTask extends AsyncTask<Float, Void, List<TransactionDao.SubcategorySum>> {
+        private TransactionDao transactionDao;
+
+        private GetSubcategorySumAsyncTask(TransactionDao transactionDao) {
+            this.transactionDao = transactionDao;
+        }
+        @Override
+        protected List<TransactionDao.SubcategorySum> doInBackground(Float... floats) {
+            return transactionDao.getSubcategorySum(floats[0], floats[1]);
         }
     }
 

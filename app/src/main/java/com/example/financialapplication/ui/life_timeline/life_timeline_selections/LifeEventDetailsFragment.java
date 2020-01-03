@@ -31,6 +31,7 @@ public class LifeEventDetailsFragment extends Fragment {
     int year = 0;
     int month = 0;
     int day = 0;
+    Calendar selectedDate = Calendar.getInstance();
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_life_event_details, container, false);
@@ -50,11 +51,13 @@ public class LifeEventDetailsFragment extends Fragment {
             public void onClick(View v) {
                 String newLifeEventText = editTextLifeEventTitle.getText().toString();
                 String[] editDateText = editTextDate.getText().toString().split(",");
-                Calendar calendar = Calendar.getInstance();
-                calendar.set(Integer.parseInt(editDateText[0]), Integer.parseInt(editDateText[1]), Integer.parseInt(editDateText[2]));
-                LifeEventEntity newLifeEvent = new LifeEventEntity(newLifeEventText, imageId, calendar);
+                LifeEventEntity newLifeEvent = new LifeEventEntity(newLifeEventText, imageId, selectedDate);
                 lifeTimelineViewModel.insertLifeEvent(newLifeEvent);
 
+
+//                Calendar calendar = Calendar.getInstance();
+//                calendar.set(2019, 4, 10);
+//                lifeEventDao.insert(new LifeEventEntity("Purchase House!", 2131165316, calendar));
 
                 NavDirections action = LifeEventDetailsFragmentDirections.actionLifeEventDetailsFragmentToLifeTimelineFragment();
                 Navigation.findNavController(v).navigate(action);
@@ -75,8 +78,8 @@ public class LifeEventDetailsFragment extends Fragment {
                         new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
-                        editTextDate.setText(year + "/" + month + 1 +"/" + day);
-
+                        editTextDate.setText(year + "/" + (month + 1) + "/" + day);
+                        selectedDate.set(year, month, day);
                     }
                         }, year, month, day);
                 datePickerDialog[0].show();

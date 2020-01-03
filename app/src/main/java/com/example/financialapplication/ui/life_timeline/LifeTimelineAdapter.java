@@ -12,8 +12,12 @@ import com.example.financialapplication.R;
 import com.example.financialapplication.db.entity.LifeEventEntity;
 import com.example.financialapplication.ui.life_picture_board.LifeElementsAdapter;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,10 +43,13 @@ public class LifeTimelineAdapter extends RecyclerView.Adapter<LifeTimelineAdapte
     public void onBindViewHolder(@NonNull TimelineEventHolder holder, int position) {
         LifeEventEntity mLifeEventEntity = lifeEventEntityList.get(position);
 
+        SimpleDateFormat formatter = new SimpleDateFormat("MMMM dd, yyyy", Locale.US);
+        String formattedDate = formatter.format(mLifeEventEntity.getBeginningDate().getTime());
+        holder.textViewDate.setText(formattedDate);
+
         mImageDrawable = context.getResources().getDrawable(mLifeEventEntity.getImageId());
         holder.textViewEventName.setText(mLifeEventEntity.getEventName());
         holder.imageViewEventIcon.setImageDrawable(mImageDrawable);
-        holder.textViewDate.setText(mLifeEventEntity.getBeginningDate().toString());
     }
 
     @Override

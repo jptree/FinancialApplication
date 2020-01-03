@@ -3,6 +3,8 @@ package com.example.financialapplication.ui.expenses.expense_details.details_fir
 import android.app.Application;
 import android.util.Log;
 
+import com.example.financialapplication.db.dao.TransactionDao;
+//import com.example.financialapplication.db.entity.SubcategoryEntity;
 import com.example.financialapplication.db.entity.TransactionEntity;
 import com.example.financialapplication.db.repository.TransactionRepository;
 
@@ -19,6 +21,7 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
 public class DetailsFirstTabViewModel extends AndroidViewModel {
     private TransactionRepository repository;
     private MutableLiveData<List<TransactionEntity>> transactionsList = new MutableLiveData<>();
+    private MutableLiveData<List<TransactionDao.SubcategorySum>> subcategorySumList = new MutableLiveData<>();
 
     public DetailsFirstTabViewModel(@NonNull Application application) {
         super(application);
@@ -53,7 +56,12 @@ public class DetailsFirstTabViewModel extends AndroidViewModel {
         return transactionsList;
     }
 
-//    public LiveData<List<TransactionEntity>> getTest(float value) {
-//        return repository.getTest(value);
-//    }
+    public void postSubcategorySumList(float minValue, float maxValue) {
+        subcategorySumList.postValue(repository.getSubcategorySum(minValue, maxValue));
+    }
+
+    public MutableLiveData<List<TransactionDao.SubcategorySum>> getSubcategorySumList() {
+        return subcategorySumList;
+    }
+
 }

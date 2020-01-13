@@ -63,9 +63,9 @@ public class LifeEventDetailsFragment extends Fragment {
                 Navigation.findNavController(v).navigate(action);
             }
         });
+
+
         DatePickerDialog[] datePickerDialog = new DatePickerDialog[1];
-
-
         editTextDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -3,7 +3,9 @@ package com.example.financialapplication.ui.notifications;
 import android.app.Application;
 
 import com.example.financialapplication.db.entity.ActionEntity;
+import com.example.financialapplication.db.entity.UserEntity;
 import com.example.financialapplication.db.repository.ActionRepository;
+import com.example.financialapplication.db.repository.UserRepository;
 
 import java.util.List;
 
@@ -17,12 +19,14 @@ public class NotificationsViewModel extends AndroidViewModel {
 
     private MutableLiveData<String> mText;
     private ActionRepository repository;
+    private UserRepository userRepository;
 
     public NotificationsViewModel(@NonNull Application application) {
         super(application);
         mText = new MutableLiveData<>();
         mText.setValue("This is notifications fragment");
         repository = new ActionRepository(application);
+        userRepository = new UserRepository(application);
     }
 
     public LiveData<String> getText() {
@@ -39,5 +43,9 @@ public class NotificationsViewModel extends AndroidViewModel {
 
     public void insertAction(ActionEntity actionEntity) {
         repository.insert(actionEntity);
+    }
+
+    public void updateUser(UserEntity userEntity) {
+        userRepository.update(userEntity);
     }
 }

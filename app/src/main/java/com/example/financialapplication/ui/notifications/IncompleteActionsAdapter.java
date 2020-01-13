@@ -17,6 +17,8 @@ import java.util.List;
 import java.util.Locale;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class IncompleteActionsAdapter extends RecyclerView.Adapter<IncompleteActionsAdapter.ActionHolder> {
@@ -72,6 +74,17 @@ public class IncompleteActionsAdapter extends RecyclerView.Adapter<IncompleteAct
             textViewActionTitle = itemView.findViewById(R.id.textViewActionTitle);
             textViewReasoning = itemView.findViewById(R.id.textViewActionReasoning);
             imageViewIcon = itemView.findViewById(R.id.imageViewActionImage);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String[] s = new String[5];
+//                    s[0] = textViewActionTitle.getText().toString();
+                    //TODO: get layout type and send it here from viewmodel.
+                    NavDirections action = NotificationsFragmentDirections.actionNavigationNotificationsToSpecifyUserInformationFragment(s, "Specify User Information");
+                    Navigation.findNavController(view).navigate(action);
+                }
+            });
 
         }
     }

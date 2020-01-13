@@ -24,23 +24,8 @@
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
     <loaded-nodes>
-      <connection connection-id="a93b8355-4dee-4f2b-b6b0-17003c9ca790">
-        <schema name="main" object-types="view, table" />
-      </connection>
-      <connection connection-id="0a54e809-7f24-4188-b0c2-d463d89c8293">
-        <schema name="main" object-types="view, table" />
-      </connection>
-      <connection connection-id="6be0248b-784c-4c62-9356-f6cebaba50fd">
-        <schema name="main" object-types="view, table" />
-      </connection>
-      <connection connection-id="35537eff-02b3-4f56-abad-4fda0a925776">
-        <schema name="main" object-types="column, view, constraint, table, dataset trigger, index" />
-      </connection>
-      <connection connection-id="f690aa43-24c9-43d7-977a-d60df6415a52">
-        <schema name="main" object-types="column, view, constraint, table, dataset trigger, index" />
-      </connection>
       <connection connection-id="39751d0d-47d2-44d2-a743-6cfb9f0ce9c1">
-        <schema name="main" object-types="column, view, constraint, table, dataset trigger, index" />
+        <schema name="main" object-types="view, table" />
       </connection>
     </loaded-nodes>
   </component>
@@ -65,9 +50,7 @@
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="39751d0d-47d2-44d2-a743-6cfb9f0ce9c1" object-ref="schemas/main/tables/actions_table" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="a93b8355-4dee-4f2b-b6b0-17003c9ca790" />

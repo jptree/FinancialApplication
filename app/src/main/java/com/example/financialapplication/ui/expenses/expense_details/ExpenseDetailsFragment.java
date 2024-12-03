@@ -1,4 +1,4 @@
-package com.example.financialapplication.ui.expense_details;
+package com.example.financialapplication.ui.expenses.expense_details;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 
 //import com.example.financialapplication.ExpenseDetailsFragmentArgs;
 import com.example.financialapplication.R;
+import com.example.financialapplication.ui.expenses.expense_details.details_first_tab.DetailsFirstTabFragment;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -167,7 +168,7 @@ public class ExpenseDetailsFragment extends Fragment {
 
             switch (position) {
                 case 0:
-                    fragment = new TestObjFragment();
+                    fragment = new DetailsFirstTabFragment();
                     return fragment;
                 case 1:
                     fragment = new TestObjFragmentT();

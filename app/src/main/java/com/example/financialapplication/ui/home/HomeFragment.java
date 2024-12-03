@@ -56,6 +56,18 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        Button buttonLifeTimeline = (Button) root.findViewById(R.id.buttonLifeTimeline);
+        buttonLifeTimeline.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                NavDirections action = HomeFragmentDirections.actionNavigationHomeToLifeTimelineFragment();
+
+                Navigation.findNavController(v).navigate(action);
+
+//                notifyItemChanged(position);
+                Log.d(TAG, "onClick: Hi");
+            }
+        });
+
 //        return performanceGraphic;
         return root;
     }

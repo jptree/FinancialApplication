@@ -19,9 +19,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_expense_categories"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="2" />
+        android:layout_height="400dp" />
 
 
 </LinearLayout>
